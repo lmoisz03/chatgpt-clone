@@ -3,25 +3,43 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg-color: #f7f6f9;
+  --color-primary: #0740fad5;
+  --code-bg-color: rgb(243, 243, 243);
+  --code-text-color: rgb(56, 58, 66);
+  --code-text-shadow: none;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.dark {
+  --code-bg-color: rgb(40, 44, 52);
+  --code-text-color: rgb(171, 178, 191);
+  /* --code-text-shadow: rgba(0, 0, 0, 0.3) 0px 1px; */
+}
+@layer utilities {
+  /* Light mode */
+  .scrollbar-light::-webkit-scrollbar {
+    width: 8px;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .scrollbar-light::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  .scrollbar-light::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 1rem;
+  }
+
+  /* Dark mode */
+  .scrollbar-dark::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-track {
+    background-color: #6b7280;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-thumb {
+    background-color: #999999;
+    border-radius: 1rem;
+  }
 }
