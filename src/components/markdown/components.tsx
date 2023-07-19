@@ -133,7 +133,52 @@ export function useMDXComponents(components: Components): Components {
         </blockquote>
       );
     },
-
+    table({ children }: { children: React.ReactNode }) {
+      return (
+        <table className="w-full text-left text-sm text-gray-500 my-2  dark:text-gray-400">
+          {children}
+        </table>
+      );
+    },
+    thead({ children }: { children: React.ReactNode }) {
+      return (
+        <thead className="bg-gray-50 text-xs uppercase rounded-t-lg table-caption text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+          {children}
+        </thead>
+      );
+    },
+    tbody({ children }: { children: React.ReactNode }) {
+      return (
+        <tbody className="rounded-b-lg table-footer-group">{children}</tbody>
+      );
+    },
+    tr({ isHeader, children }: { isHeader: any; children: React.ReactNode }) {
+      const isHeaderRow = isHeader;
+      // console.log(isHeaderRow);
+      const className = `${
+        isHeaderRow ? "" : "border-b bg-gray-100  dark:bg-gray-800"
+      } dark:border-gray-700`;
+      return <tr className={className}>{children}</tr>;
+    },
+    th({
+      node,
+      isHeader,
+      children,
+    }: {
+      node: any;
+      isHeader: any;
+      children: React.ReactNode;
+    }) {
+      const classNames = `${
+        !isHeader
+          ? "px-6 py-1 font-medium text-gray-900 whitespace-nowrap dark:text-gray-300"
+          : "px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-gray-300"
+      }`;
+      return <th className={classNames}>{children}</th>;
+    },
+    td({ children }: { children: React.ReactNode }) {
+      return <td className="px-6 py-2">{children}</td>;
+    },
     ...components,
   };
 }
